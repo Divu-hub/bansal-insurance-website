@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bansal Insurance & Financial Services</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#17324d;background:#f7fafc}
+header{background:#fff;padding:18px 6%;border-bottom:1px solid #e4ebf1;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:20px;font-weight:700}.tag{font-size:13px;color:#65788a;margin-top:4px}
+.hero{padding:62px 6%;background:linear-gradient(135deg,#edf7ff,#fff)}
+.hero h1{font-size:40px;max-width:720px;margin:0 0 14px}.hero p{max-width:650px;font-size:18px;line-height:1.6;color:#5b6e7f}
+.btn{display:inline-block;padding:14px 22px;background:#17324d;color:#fff;border:0;border-radius:9px;font-weight:700;text-decoration:none;cursor:pointer}
+section{padding:48px 6%}h2{text-align:center;font-size:29px;margin:0 0 28px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #e1e9ef;border-radius:14px;padding:23px;cursor:pointer;transition:.15s}.card:hover{transform:translateY(-2px)}
+.icon{font-size:30px}.card h3{margin:10px 0 7px}.card p{color:#66798a;line-height:1.5}
+.about{text-align:center;background:#fff}.about p{max-width:720px;margin:auto;line-height:1.7;color:#66798a}
+.panel{max-width:720px;margin:auto;background:#fff;border:1px solid #e1e9ef;border-radius:14px;padding:28px}
+.step{display:none}.step.active{display:block}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:18px 0}
+.choice{padding:15px;border:1px solid #cbd8e2;border-radius:9px;background:#fff;cursor:pointer;text-align:center;font-weight:700;color:#17324d}
+.choice.selected{outline:2px solid #17324d;background:#f0f7fc}
+label{display:block;font-weight:700;margin:14px 0 6px}input,select{width:100%;padding:12px;border:1px solid #cbd8e2;border-radius:8px;font-size:15px}
+.actions{display:flex;gap:10px;margin-top:20px}.actions button{flex:1;padding:13px;border-radius:9px;border:0;font-weight:700;cursor:pointer}.next{background:#17324d;color:#fff}.back{background:#edf2f6;color:#17324d}
+.notice{background:#f5f8fa;padding:13px;border-radius:9px;color:#607384;font-size:13px;line-height:1.5;margin-top:16px}
+footer{background:#17324d;color:#fff;text-align:center;padding:24px 6%;font-size:13px;line-height:1.6}
+@media(max-width:600px){.hero h1{font-size:32px}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="brand">Bansal Insurance & Financial Services</div>
+    <div class="tag">Insurance assistance by Daman Bansal</div>
+  </div>
+  <a class="btn" href="#enquiry">Enquire</a>
+</header>
+
+<main>
+<section class="hero">
+  <h1>Insurance guidance, made simple.</h1>
+  <p>Tell us what kind of protection or financial service you are looking for. Submit a short enquiry and Daman Bansal can contact you to discuss your requirement.</p>
+  <a class="btn" href="#services">Explore Services</a>
+</section>
+
+<section id="services">
+  <h2>Choose a Service</h2>
+  <div class="grid">
+    <div class="card" onclick="startHealth()"><div class="icon">🏥</div><h3>Health Insurance</h3><p>Tell us who needs coverage and your preferred sum insured.</p></div>
+    <div class="card" onclick="startGeneral('Life Insurance')"><div class="icon">❤️</div><h3>Life Insurance</h3><p>Request assistance with life insurance options.</p></div>
+    <div class="card" onclick="startGeneral('Motor Insurance')"><div class="icon">🚗</div><h3>Motor Insurance</h3><p>Get assistance with new or renewal motor insurance.</p></div>
+    <div class="card" onclick="startGeneral('General Insurance')"><div class="icon">🛡️</div><h3>General Insurance</h3><p>Ask about other eligible general insurance requirements.</p></div>
+    <div class="card" onclick="startGeneral('Retirement & Pension')"><div class="icon">👴</div><h3>Retirement & Pension</h3><p>Request a discussion about retirement-related options.</p></div>
+    <div class="card" onclick="startGeneral('Financial Services')"><div class="icon">💰</div><h3>Financial Services</h3><p>Ask about financial products and services your advisor is authorized to provide.</p></div>
+  </div>
+</section>
+
+<section id="enquiry">
+<h2 id="formTitle">Health Insurance Enquiry</h2>
+<div class="panel">
+  <div id="healthFlow">
+    <div class="step active" id="h1">
+      <h3>1. Who needs health insurance?</h3>
+      <div class="choices">
+        <button class="choice" onclick="choose(this,'person')">Self</button>
+        <button class="choice" onclick="choose(this,'person')">Family</button>
+        <button class="choice" onclick="choose(this,'person')">Parents</button>
+      </div>
+      <div class="actions"><button class="next" onclick="goH(2)">Next</button></div>
+    </div>
+    <div class="step" id="h2">
+      <h3>2. What sum insured are you considering?</h3>
+      <div class="choices">
+        <button class="choice" onclick="choose(this,'sum')">₹5 lakh</button>
+        <button class="choice" onclick="choose(this,'sum')">₹10 lakh</button>
+        <button class="choice" onclick="choose(this,'sum')">₹15 lakh</button>
+        <button class="choice" onclick="choose(this,'sum')">₹20 lakh+</button>
+        <button class="choice" onclick="choose(this,'sum')">Not sure</button>
+      </div>
+      <div class="actions"><button class="back" onclick="goH(1)">Back</button><button class="next" onclick="goH(3)">Next</button></div>
+    </div>
+    <div class="step" id="h3">
+      <h3>3. Tell us how to contact you</h3>
+      <label>Name</label><input id="hName" placeholder="Your name">
+      <label>Phone number</label><input id="hPhone" type="tel" placeholder="Your phone number">
+      <label>City / State</label><input id="hCity" placeholder="Example: Moga, Punjab">
+      <div class="actions"><button class="back" onclick="goH(2)">Back</button><button class="next" onclick="submitDemo('Health Insurance')">Get a Quote / Consultation</button></div>
+      <div class="notice">This prototype does not collect payment, OTP, Aadhaar, PAN, bank details, or medical documents. Final product availability and premium depend on the insurer's terms, eligibility and applicable regulations.</div>
+    </div>
+  </div>
+
+  <div id="generalFlow" style="display:none">
+    <h3 id="generalHeading">Service Enquiry</h3>
+    <label>Name</label><input id="gName" placeholder="Your name">
+    <label>Phone number</label><input id="gPhone" type="tel" placeholder="Your phone number">
+    <label>City / State</label><input id="gCity" placeholder="Example: Ludhiana, Punjab">
+    <div class="actions"><button class="next" onclick="submitGeneral()">Get a Quote / Consultation</button></div>
+    <div class="notice">This is an enquiry only. Your advisor will discuss suitable options and applicable terms before any policy or financial product is selected.</div>
+  </div>
+</div>
+</section>
+
+<section class="about">
+<h2>About Daman Bansal</h2>
+<p>Daman Bansal provides personal insurance assistance and meets customers to understand their requirements and explain available options. Customers can begin online and arrange a conversation with the advisor.</p>
+</section>
+</main>
+
+<footer>
+Bansal Insurance & Financial Services · Advisor: Daman Bansal<br>
+Insurance availability and issuance are subject to applicable regulations, insurer terms, eligibility and the relevant provider's conditions.
+</footer>
+
+<script>
+let selectedPerson='', selectedSum='', currentService='';
+function choose(el,type){
+  el.parentElement.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+  if(type==='person') selectedPerson=el.textContent;
+  if(type==='sum') selectedSum=el.textContent;
+}
+function goH(n){
+  if(n===2 && !selectedPerson){alert('Please select who needs health insurance.');return;}
+  if(n===3 && !selectedSum){alert('Please select a sum insured option.');return;}
+  document.querySelectorAll('#healthFlow .step').forEach(x=>x.classList.remove('active'));
+  document.getElementById('h'+n).classList.add('active');
+}
+function startHealth(){
+  currentService='Health Insurance';
+  document.getElementById('formTitle').textContent='Health Insurance Enquiry';
+  document.getElementById('healthFlow').style.display='block';
+  document.getElementById('generalFlow').style.display='none';
+  document.getElementById('enquiry').scrollIntoView({behavior:'smooth'});
+}
+function startGeneral(service){
+  currentService=service;
+  document.getElementById('formTitle').textContent=service+' Enquiry';
+  document.getElementById('healthFlow').style.display='none';
+  document.getElementById('generalFlow').style.display='block';
+  document.getElementById('generalHeading').textContent='Tell us about your '+service.toLowerCase()+' requirement';
+  document.getElementById('enquiry').scrollIntoView({behavior:'smooth'});
+}
+function submitDemo(service){
+  if(!document.getElementById('hName').value || !document.getElementById('hPhone').value || !document.getElementById('hCity').value){alert('Please complete your name, phone number and city/state.');return;}
+  alert('Prototype test: your enquiry is ready to be connected to Daman Bansal. Email/WhatsApp delivery will be connected in the next step.');
+}
+function submitGeneral(){
+  if(!document.getElementById('gName').value || !document.getElementById('gPhone').value || !document.getElementById('gCity').value){alert('Please complete your name, phone number and city/state.');return;}
+  alert('Prototype test: your enquiry is ready to be connected to Daman Bansal. Email/WhatsApp delivery will be connected in the next step.');
+}
+</script>
+</body>
+</html>
